@@ -25,16 +25,6 @@ const handleSubmit = async () => {
      *      no
      *          show user message it's not valid URL
      */
-    const url = 'value from user'
-    if(CheckURL(url))
-    {
-        post("http://localhost:8081/add-url", {url}).then(data =>{
-            document.getElementById('polarity').innerHTML = 'Polarity: ${data.score_tag}`
-        })
-    }
-    else{
-        alert('please enter valid url')
-    }
 }
 
 export default handleSubmit
