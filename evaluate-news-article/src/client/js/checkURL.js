@@ -9,7 +9,7 @@
     6. https://www.npmjs.com/package/valid-url
  */
 import "babel-polyfill"
-function checkURL()
+function checkURL(inputText)
 {
   // URL Regex copied from https://www.urlregex.com/
     let urlPattern = new RegExp(

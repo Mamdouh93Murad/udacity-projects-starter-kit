@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
     entry: './src/client/index.js',
     mode: 'development',
@@ -24,13 +25,14 @@ module.exports = {
             //    3. Inject styles into DOM
             {
                 test: /\.scss$/,
-                use: [MiniCssExtractPlugin, "css-loader", "sass-loader"],
-            },
+                use: ['style-loader', "css-loader", "sass-loader"],
+            }
+            /*,
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 use: "file-loader?name=./assets/images/[name].[ext]",
               },
-            /* HINT: structure
+             HINT: structure
         {
           test: REGEX_TO_MATCH_FILES ex. /\.js$/,
           exclude: /node_modules/,

@@ -24,7 +24,7 @@ module.exports = {
             //    3. Extract css into files
             {
                 test: /\.scss$/,
-                use: [MiniCssExtractPlugin, "css-loader", "sass-loader"],
+                use: ['style-loader', "css-loader", "sass-loader"],
             }
             /* HINT: structure
             

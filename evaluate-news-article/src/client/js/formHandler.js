@@ -30,7 +30,7 @@ const handleSubmit = async () => {
      const url = document.getElementById('url').value
     if(CheckURL(url))
     {
-        post("http://localhost:8081/add-url", {url}).then(data =>{
+        await post("http://localhost:8081/add-url", {url}).then(data =>{
             document.getElementById('text').innerHTML = data.text 
             document.getElementById('agreement').innerHTML = data.agreement
             document.getElementById('subjectivity').innerHTML = data.subjectivity

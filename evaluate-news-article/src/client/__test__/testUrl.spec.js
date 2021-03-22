@@ -1,6 +1,8 @@
 // TODO: import the url check function
 // with reference to github repo && stackoverflow difference between toBeTruth/Truthy & toBeTruthy/Falsy
 import checkURL from '../js/checkURL'
+import 'babel-polyfill'
+
 describe('Test check url functionality', () => {
     test('Testing the checkUrl function defined or not', () => {
         // TODO: write your logic here
