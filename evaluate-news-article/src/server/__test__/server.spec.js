@@ -7,4 +7,7 @@ describe('Server Test', () => {
     // HINT: Review
     //  1. https://www.npmjs.com/package/supertest
     //  2. https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
+    it('should test that true === true', () => {
+        expect(true).toBe(true)
+      })
 })

@@ -1,21 +1,38 @@
 // TODO: Configure the environment variables
+require('dotenv').config()
+
 
 const mockAPIResponse = require('./mockAPI.js')
 
-const PORT = 8081
+//const PORT = 8081
 
+projectData = {};
 // TODO add Configuration to be able to use env variables
-
+const PORT = process.env.PORT
+const key = process.env.API_KEY
 const BASE_API_URL = 'https://api.meaningcloud.com/sentiment-2.1'
 
 // TODO: Create an instance for the server
+const express = require('express');
+const app = express();
 // TODO: Configure cors to avoid cors-origin issue
+const cors = require('cors');
+app.use(cors());
 // TODO: Configure express to use body-parser as middle-ware.
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+const axios = require("axios");
 // TODO: Configure express static directory.
+app.use(express.static("dist"));
+
+// Start up an instance of app
+
+
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+     res.sendFile('dist/index.html')
+   // res.sendFile(path.resolve('src/client/views/index.html'))
 })
 // INFO: a route that handling post request for new URL that coming from the frontend
 app.post('/add-url', async (req, res) => {
@@ -36,6 +53,19 @@ app.post('/add-url', async (req, res) => {
        irony : ''
      }
   */
+     const url = req.body.url
+     var api_url = `${BASE_API_URL}?key=${key}&url=${url}&lang=en`
+     const sample = await axios(api_url);
+     res.send({
+        agreement : sample.data.agreement,
+        subjectivity: sample.data.subjectivity,
+        irony: sample.data.irony,
+        confidence: sample.data.confidence,
+        score_tag: sample.data.score_tag,
+        text: sample.data.sentence_list.text,
+    });
+
+
     } catch (error) {
         console.log(error.message)
     }

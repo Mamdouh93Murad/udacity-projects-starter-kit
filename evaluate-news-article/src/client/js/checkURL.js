@@ -8,7 +8,14 @@
     5. https://stackoverflow.com/a/5717133/6483379
     6. https://www.npmjs.com/package/valid-url
  */
-function name()
+import "babel-polyfill"
+function checkURL()
 {
-    return true
+  // URL Regex copied from https://www.urlregex.com/
+    let urlPattern = new RegExp(
+      /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/
+    );
+    return urlPattern.test(inputText);
 }
+
+export default checkURL

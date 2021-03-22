@@ -1,5 +1,5 @@
 import handleSubmit from './js/formHandler'
-
+import checkURL from './js/checkURL'
 // TODO include your scss file here
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +11,6 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 })
 export {
-    checkForName,
+    checkURL,
     handleSubmit
    }
