@@ -28,7 +28,7 @@ const handleSubmit = async () => {
      *          show user message it's not valid URL
      */
      const url = document.getElementById('url').value
-    if(CheckURL(url))
+    if(client.CheckURL(url))
     {
         await post("http://localhost:8081/add-url", {url}).then(data =>{
             document.getElementById('text').innerHTML = data.text 

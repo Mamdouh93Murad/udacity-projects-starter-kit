@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // TODO: add event listener to it when the click to call handleSubmit function
     const buttonSubmit = document.getElementById('btn-submit')
     buttonSubmit.addEventListener('click', () => {
+        
         handleSubmit();
     })
 })

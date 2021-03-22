@@ -15,16 +15,17 @@ const BASE_API_URL = 'https://api.meaningcloud.com/sentiment-2.1'
 // TODO: Create an instance for the server
 const express = require('express');
 const app = express();
+app.use(express.static("dist"));
 // TODO: Configure cors to avoid cors-origin issue
-const cors = require('cors');
-app.use(cors());
+
 // TODO: Configure express to use body-parser as middle-ware.
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const axios = require("axios");
 // TODO: Configure express static directory.
-app.use(express.static("dist"));
+const cors = require('cors');
+app.use(cors());
 
 // Start up an instance of app
 
@@ -56,7 +57,7 @@ app.post('/add-url', async (req, res) => {
      const url = req.body.url
      var api_url = `${BASE_API_URL}?key=${key}&url=${url}&lang=en`
      const sample = await axios(api_url);
-     res.send({
+     res.json({
         agreement : sample.data.agreement,
         subjectivity: sample.data.subjectivity,
         irony: sample.data.irony,
