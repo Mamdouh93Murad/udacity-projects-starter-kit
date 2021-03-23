@@ -1,4 +1,5 @@
-import "babel-polyfill"
+//import "babel-polyfill"
+import checkURL from './checkURL'
 
 const post = async (url = '', data = {}) => {
     const response = await fetch(url, {
@@ -28,11 +29,12 @@ const handleSubmit = async () => {
      *      no
      *          show user message it's not valid URL
      */
+    
      const url = document.getElementById('url').value
-    if(client.CheckURL(url))
+    if(checkURL(url))
     {
         console.log("FORM UPDATE RESULTS")
-        await post("http://localhost:8081/add-url", {url}).then((data) =>{
+        await post("http://localhost:8056/add-url", {url}).then((data) =>{
             document.getElementById('text').innerHTML = data.text 
             document.getElementById('agreement').innerHTML = data.agreement
             document.getElementById('subjectivity').innerHTML = data.subjectivity
