@@ -15,6 +15,7 @@ const post = async (url = '', data = {}) => {
     } catch (error) {
         console.log(error)
     }
+    console.log('FORM POST')
 }
 
 const handleSubmit = async () => {
@@ -30,7 +31,8 @@ const handleSubmit = async () => {
      const url = document.getElementById('url').value
     if(client.CheckURL(url))
     {
-        await post("http://localhost:8081/add-url", {url}).then(data =>{
+        console.log("FORM UPDATE RESULTS")
+        await post("http://localhost:8081/add-url", {url}).then((data) =>{
             document.getElementById('text').innerHTML = data.text 
             document.getElementById('agreement').innerHTML = data.agreement
             document.getElementById('subjectivity').innerHTML = data.subjectivity

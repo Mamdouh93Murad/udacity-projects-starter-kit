@@ -10,15 +10,13 @@ import './styles/_resets.scss'
 import './styles/style.scss'
 
 window.addEventListener('DOMContentLoaded', () => {
+    console.log('EVENT LISTENER')
     // TODO: get the button for submit
     // TODO: add event listener to it when the click to call handleSubmit function
     const buttonSubmit = document.getElementById('btn-submit')
-    buttonSubmit.addEventListener('click', () => {
-        
-        handleSubmit();
+    buttonSubmit.addEventListener('click', (e) => {
+        e.preventDefault()
+        handleSubmit()
     })
 })
-export {
-    checkURL,
-    handleSubmit
-   }
+export { checkURL, handleSubmit }

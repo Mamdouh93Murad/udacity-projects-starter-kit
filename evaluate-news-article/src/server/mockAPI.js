@@ -5,3 +5,5 @@ let json = {
 }
 
 module.exports = json
+
+console.log('MOCK')

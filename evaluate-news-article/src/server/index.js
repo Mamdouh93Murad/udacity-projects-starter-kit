@@ -6,7 +6,7 @@ const mockAPIResponse = require('./mockAPI.js')
 
 //const PORT = 8081
 
-projectData = {};
+
 // TODO add Configuration to be able to use env variables
 const PORT = process.env.PORT
 const key = process.env.API_KEY
@@ -34,6 +34,7 @@ app.use(cors());
 app.get('/', function (req, res) {
      res.sendFile('dist/index.html')
    // res.sendFile(path.resolve('src/client/views/index.html'))
+   console.log('APP GET')
 })
 // INFO: a route that handling post request for new URL that coming from the frontend
 app.post('/add-url', async (req, res) => {
@@ -57,7 +58,7 @@ app.post('/add-url', async (req, res) => {
      const url = req.body.url
      var api_url = `${BASE_API_URL}?key=${key}&url=${url}&lang=en`
      const sample = await axios(api_url);
-     res.json({
+     res.send({
         agreement : sample.data.agreement,
         subjectivity: sample.data.subjectivity,
         irony: sample.data.irony,
@@ -65,7 +66,7 @@ app.post('/add-url', async (req, res) => {
         score_tag: sample.data.score_tag,
         text: sample.data.sentence_list.text,
     });
-
+    console.log('APP POST')
 
     } catch (error) {
         console.log(error.message)
@@ -74,6 +75,7 @@ app.post('/add-url', async (req, res) => {
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
+    console.log('APP GET TEST')
 })
 
 // designates what port the app will listen to for incoming requests
